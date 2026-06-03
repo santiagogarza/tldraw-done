@@ -64,7 +64,7 @@ describe('canvas theme integration', () => {
 		editor.dispose()
 	})
 
-	it('keeps color scheme when selecting a named theme mode', () => {
+	it('resets to light color scheme when selecting a named theme mode', () => {
 		const editor = new TestEditor()
 		editor.user.updateUserPreferences({ colorScheme: 'dark' })
 		const { userPreferences, editorThemeId } = getCanvasThemePreferenceUpdate('sky')
@@ -72,8 +72,8 @@ describe('canvas theme integration', () => {
 		editor.setCurrentTheme(editorThemeId)
 
 		expect(editor.getCurrentThemeId()).toBe('sky')
-		expect(editor.user.getIsDarkMode()).toBe(true)
-		expect(editor.user.getUserPreferences().colorScheme).toBe('dark')
+		expect(editor.user.getIsDarkMode()).toBe(false)
+		expect(editor.user.getUserPreferences().colorScheme).toBe('light')
 		expect(getActiveCanvasThemeMode(editor.getCurrentThemeId(), editor.user.getIsDarkMode())).toBe(
 			'sky'
 		)

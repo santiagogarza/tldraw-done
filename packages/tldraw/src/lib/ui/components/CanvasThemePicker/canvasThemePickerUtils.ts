@@ -32,7 +32,7 @@ export function getCanvasThemePreferenceUpdate(mode: CanvasThemeMode): CanvasThe
 		case 'sunrise':
 		case 'sunset':
 			return {
-				userPreferences: { themeId: mode },
+				userPreferences: { colorScheme: 'light', themeId: mode },
 				editorThemeId: mode,
 			}
 		default: {

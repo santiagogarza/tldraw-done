@@ -78,7 +78,7 @@ export function CanvasThemePicker() {
 					/>
 				</button>
 			</TldrawUiPopoverTrigger>
-			<TldrawUiPopoverContent side="bottom" align="start" sideOffset={8}>
+			<TldrawUiPopoverContent side="bottom" align="start" sideOffset={8} alignOffset={4}>
 				<ul className="tlui-canvas-theme-picker__list" role="listbox">
 					{CANVAS_THEME_MODES.map(({ mode, label, swatch }) => (
 						<li key={mode} role="presentation">

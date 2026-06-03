@@ -34,17 +34,17 @@ describe('getCanvasThemePreferenceUpdate', () => {
 		})
 	})
 
-	it('only updates themeId for sky, sunrise, and sunset (preserves color scheme)', () => {
+	it('sets light color scheme for sky, sunrise, and sunset so modes are exclusive', () => {
 		expect(getCanvasThemePreferenceUpdate('sky')).toEqual({
-			userPreferences: { themeId: 'sky' },
+			userPreferences: { colorScheme: 'light', themeId: 'sky' },
 			editorThemeId: 'sky',
 		})
 		expect(getCanvasThemePreferenceUpdate('sunrise')).toEqual({
-			userPreferences: { themeId: 'sunrise' },
+			userPreferences: { colorScheme: 'light', themeId: 'sunrise' },
 			editorThemeId: 'sunrise',
 		})
 		expect(getCanvasThemePreferenceUpdate('sunset')).toEqual({
-			userPreferences: { themeId: 'sunset' },
+			userPreferences: { colorScheme: 'light', themeId: 'sunset' },
 			editorThemeId: 'sunset',
 		})
 	})
