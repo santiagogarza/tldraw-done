@@ -1,3 +1,4 @@
+import { useQuickReactor } from '@tldraw/state-react'
 import { MigrationSequence, Store } from '@tldraw/store'
 import {
 	TLShape,
@@ -747,6 +748,7 @@ function Layout({ children, onMount }: { children: ReactNode; onMount?: TLOnMoun
 	useZoomCss()
 	useCursor()
 	useDarkMode()
+	useThemeCssVars()
 	useForceUpdate()
 	useStateAttribute()
 	useOnMount((editor) => {
@@ -760,6 +762,25 @@ function Layout({ children, onMount }: { children: ReactNode; onMount?: TLOnMoun
 	})
 
 	return children
+}
+
+function useThemeCssVars() {
+	const editor = useEditor()
+	const container = useContainer()
+
+	useQuickReactor(
+		'update theme css vars',
+		() => {
+			const colors = editor.getCurrentTheme().colors[editor.getColorMode()]
+			container.style.setProperty('--tl-color-selection-fill', colors.selectionFill)
+			container.style.setProperty('--tl-color-selection-stroke', colors.selectionStroke)
+			container.style.setProperty('--tl-color-selected', colors.selectionStroke)
+			container.style.setProperty('--tl-color-primary', colors.selectionStroke)
+			container.style.setProperty('--tl-color-focus', colors.selectionStroke)
+			container.style.setProperty('--tl-color-selected-contrast', colors.selectedContrast)
+		},
+		[editor, container]
+	)
 }
 
 function Crash({ crashingError }: { crashingError: unknown }): null {

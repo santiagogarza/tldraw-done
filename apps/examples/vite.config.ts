@@ -86,11 +86,11 @@ export default defineConfig(({ mode }) => ({
 		target: 'es2022',
 	},
 	server: {
-		port: 5420,
+		port: 5421,
 		allowedHosts: true,
 	},
 	preview: {
-		port: 5420,
+		port: 5421,
 	},
 	clearScreen: false,
 	optimizeDeps: {
